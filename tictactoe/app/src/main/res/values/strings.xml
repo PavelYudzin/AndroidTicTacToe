@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">TicTacToe</string>
+    <string name="homeTitle">Tic Tac Toe</string>
+    <string name="pve">Player VS Computer</string>
+    <string name="pvp">Player VS Player</string>
+</resources>
