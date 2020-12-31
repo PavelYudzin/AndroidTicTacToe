@@ -4,46 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#25313b"
     android:orientation="vertical"
-    android:background="#445869"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="@string/homeTitle"
+        android:layout_marginTop="180dp"
+        android:text="@string/home_title"
         android:textColor="#ffffff"
-        android:textSize="38sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/pve_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:background="@drawable/play_button"
+        android:background="@drawable/orange_button"
         android:text="@string/pve"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
+        android:width="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/pvp_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:background="@drawable/play_button"
+        android:background="@drawable/orange_button"
+        android:onClick="playButtonClick"
         android:text="@string/pvp"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
+        android:width="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pve_button"/>
+        app:layout_constraintTop_toBottomOf="@+id/pve_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

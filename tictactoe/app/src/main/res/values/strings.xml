@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">TicTacToe</string>
-    <string name="homeTitle">Tic Tac Toe</string>
+    <string name="home_title">Tic Tac Toe</string>
     <string name="pve">Player VS Computer</string>
     <string name="pvp">Player VS Player</string>
+    <string name="player1">Player 1</string>
+    <string name="player2">Player 2</string>
+    <string name="enter_name">Enter Your Name</string>
+    <string name="submit_button">Submit</string>
+    <string name="play_again_button">Play Again</string>
+    <string name="home_button">Home</string>
 </resources>
