@@ -9,6 +9,8 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -17,6 +19,7 @@ public class TicTacToeBoard extends View {
     private final int XColor;
     private final int OColor;
     private final int winningLineColor;
+    private boolean winningLine = false;
     private final Paint paint = new Paint();
     private final PVPLogic game;
     private int cellSize = getWidth() / 3;
@@ -65,14 +68,22 @@ public class TicTacToeBoard extends View {
         if (action == MotionEvent.ACTION_DOWN) {
             int row = (int) Math.ceil(y / cellSize);
             int column = (int) Math.ceil(x / cellSize);
-            if (game.updateGameBoard(row, column)) {
-                invalidate();
 
-                // updating the players turn
-                if (game.getPlayer() == 2) {
-                    game.setPlayer(1);
-                } else {
-                    game.setPlayer(2);
+            if (!winningLine) {
+                if (game.updateGameBoard(row, column)) {
+                    invalidate();
+
+                    if(game.winnerCheck()) {
+                        winningLine = true;
+                        invalidate();
+                    }
+
+                    // updating the players turn
+                    if (game.getPlayer() == 2) {
+                        game.setPlayer(1);
+                    } else {
+                        game.setPlayer(2);
+                    }
                 }
             }
             invalidate();
@@ -120,16 +131,27 @@ public class TicTacToeBoard extends View {
                 paint);
     }
 
+    @SuppressLint("NewApi")
     private void drawO(Canvas canvas, int row, int column) {
         paint.setColor(OColor);
         float correction = cellSize * 0.15f;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            canvas.drawOval(column * cellSize + correction,
-                    row * cellSize + correction,
-                    (column * cellSize + cellSize) - correction,
-                    (row * cellSize + cellSize) - correction,
-                    paint);
-        }
 
+        canvas.drawOval(column * cellSize + correction,
+                row * cellSize + correction,
+                (column * cellSize + cellSize) - correction,
+                (row * cellSize + cellSize) - correction,
+                paint);
+    }
+
+    public void setUpGame(Button playAgain, Button home, TextView playerDisplay, String[] names) {
+        game.setPlayAgainBTN(playAgain);
+        game.setHomeBTN(home);
+        game.setPlayerTurn(playerDisplay);
+        game.setPlayerNames(names);
+    }
+
+    public void resetGame() {
+        game.resetGame();
+        winningLine = false;
     }
 }

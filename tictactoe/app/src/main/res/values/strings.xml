@@ -9,4 +9,6 @@
     <string name="submit_button">Submit</string>
     <string name="play_again_button">Play Again</string>
     <string name="home_button">Home</string>
+    <string name="won"> Won!!!</string>
+    <string name="draw">Tie Game!!!</string>
 </resources>

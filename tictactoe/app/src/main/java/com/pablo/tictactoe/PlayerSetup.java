@@ -22,6 +22,12 @@ public class PlayerSetup extends AppCompatActivity {
     public void submitButtonClick(View view) {
         String playerOneName = player1.getText().toString();
         String playerTwoName = player2.getText().toString();
+        if(playerOneName.equals("")) {
+            playerOneName = "Player 1";
+        }
+        if(playerTwoName.equals("")) {
+            playerTwoName = "Player 2";
+        }
         Intent intent = new Intent(this, GameDisplay.class);
         intent.putExtra("PLAYER_NAMES", new String[] {playerOneName, playerTwoName});
         startActivity(intent);
