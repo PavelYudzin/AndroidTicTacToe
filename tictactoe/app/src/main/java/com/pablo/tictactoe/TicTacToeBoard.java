@@ -1,11 +1,13 @@
 package com.pablo.tictactoe;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -16,10 +18,12 @@ public class TicTacToeBoard extends View {
     private final int OColor;
     private final int winningLineColor;
     private final Paint paint = new Paint();
+    private final PVPLogic game;
     private int cellSize = getWidth() / 3;
 
     public TicTacToeBoard(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        game = new PVPLogic();
 
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.TicTacToeBoard,
                 0, 0);
@@ -49,6 +53,32 @@ public class TicTacToeBoard extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
         drawGameBoard(canvas);
+        drawMarkers(canvas);
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float x = event.getX();
+        float y = event.getY();
+        int action = event.getAction();
+        if (action == MotionEvent.ACTION_DOWN) {
+            int row = (int) Math.ceil(y / cellSize);
+            int column = (int) Math.ceil(x / cellSize);
+            if (game.updateGameBoard(row, column)) {
+                invalidate();
+
+                // updating the players turn
+                if (game.getPlayer() == 2) {
+                    game.setPlayer(1);
+                } else {
+                    game.setPlayer(2);
+                }
+            }
+            invalidate();
+            return true;
+        }
+        return false;
     }
 
     private void drawGameBoard(Canvas canvas) {
@@ -58,6 +88,20 @@ public class TicTacToeBoard extends View {
         for (int c = 1; c < 3; c++) {
             canvas.drawLine(cellSize * c, 0, cellSize * c, canvas.getWidth(), paint);
             canvas.drawLine(0, cellSize * c, canvas.getWidth(), cellSize * c, paint);
+        }
+    }
+
+    private void drawMarkers(Canvas canvas) {
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) {
+                if (game.getGameBoard()[r][c] != 0) {
+                    if (game.getGameBoard()[r][c] == 1) {
+                        drawX(canvas, r, c);
+                    } else {
+                        drawO(canvas, r, c);
+                    }
+                }
+            }
         }
     }
 
