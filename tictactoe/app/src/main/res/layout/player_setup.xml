@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#25313b"
+    android:orientation="vertical"
     tools:context=".PlayerSetup">
 
     <TextView
@@ -40,6 +41,7 @@
         android:inputType="textPersonName"
         android:textColorHint="#bfbfbf"
         android:textSize="20sp"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerSetupTitle" />
@@ -64,6 +66,7 @@
         android:inputType="textPersonName"
         android:textColorHint="#bfbfbf"
         android:textSize="20sp"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerOneName" />
@@ -73,10 +76,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:width="200dp"
         android:background="@drawable/white_button"
+        android:onClick="submitButtonClick"
         android:text="@string/submit_button"
         android:textSize="18sp"
-        android:width="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerTwoName" />
