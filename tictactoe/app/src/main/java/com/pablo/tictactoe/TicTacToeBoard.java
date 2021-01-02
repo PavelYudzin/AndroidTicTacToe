@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,6 +22,7 @@ public class TicTacToeBoard extends View {
     private final Paint paint = new Paint();
     private final PVPLogic game;
     private int cellSize = getWidth() / 3;
+    private float correction;
 
     public TicTacToeBoard(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -49,6 +49,7 @@ public class TicTacToeBoard extends View {
         int dimension = Math.min(boardWidth, boardHeight);
         cellSize = dimension / 3;
         setMeasuredDimension(dimension, dimension);
+        correction = cellSize * 0.15f;
     }
 
     @Override
@@ -57,6 +58,11 @@ public class TicTacToeBoard extends View {
         paint.setAntiAlias(true);
         drawGameBoard(canvas);
         drawMarkers(canvas);
+
+        if(winningLine) {
+            paint.setColor(winningLineColor);
+            drawWinningLine(canvas);
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -73,7 +79,7 @@ public class TicTacToeBoard extends View {
                 if (game.updateGameBoard(row, column)) {
                     invalidate();
 
-                    if(game.winnerCheck()) {
+                    if (game.winnerCheck()) {
                         winningLine = true;
                         invalidate();
                     }
@@ -103,6 +109,7 @@ public class TicTacToeBoard extends View {
     }
 
     private void drawMarkers(Canvas canvas) {
+        paint.setStrokeWidth(12);
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < 3; c++) {
                 if (game.getGameBoard()[r][c] != 0) {
@@ -118,7 +125,6 @@ public class TicTacToeBoard extends View {
 
     private void drawX(Canvas canvas, int row, int column) {
         paint.setColor(XColor);
-        float correction = cellSize * 0.15f;
         canvas.drawLine((column + 1) * cellSize - correction,
                 row * cellSize + correction,
                 column * cellSize + correction,
@@ -134,13 +140,71 @@ public class TicTacToeBoard extends View {
     @SuppressLint("NewApi")
     private void drawO(Canvas canvas, int row, int column) {
         paint.setColor(OColor);
-        float correction = cellSize * 0.15f;
-
         canvas.drawOval(column * cellSize + correction,
                 row * cellSize + correction,
                 (column * cellSize + cellSize) - correction,
                 (row * cellSize + cellSize) - correction,
                 paint);
+    }
+
+    private void drawHorizontalLine(Canvas canvas, int row, int column) {
+        canvas.drawLine(column, row * cellSize + cellSize / 2f,
+                cellSize * 3, row * cellSize + cellSize / 2f,
+                paint);
+    }
+
+    private void drawVerticalLine(Canvas canvas, int row, int column) {
+        canvas.drawLine(column * cellSize + cellSize / 2f, row,
+                column * cellSize + cellSize / 2f, cellSize * 3,
+                paint);
+    }
+
+    private void drawDiagonalLinePositive(Canvas canvas) {
+        canvas.drawLine(0, cellSize * 3 - cellSize / 2f,
+                cellSize, cellSize * 3 - cellSize / 2f,
+                paint);
+        canvas.drawLine(cellSize, cellSize + cellSize / 2f,
+                cellSize * 2, cellSize + cellSize / 2f,
+                paint);
+        canvas.drawLine(cellSize * 2, cellSize / 2f,
+                cellSize * 3, cellSize / 2f,
+                paint);
+    }
+
+    private void drawDiagonalLineNegative(Canvas canvas) {
+        canvas.drawLine(0, cellSize / 2f,
+                cellSize, cellSize / 2f,
+                paint);
+        canvas.drawLine(cellSize, cellSize + cellSize / 2f,
+                cellSize * 2, cellSize + cellSize / 2f,
+                paint);
+        canvas.drawLine(cellSize * 2, cellSize * 2 + cellSize / 2f,
+                cellSize * 3, cellSize * 2 + cellSize / 2f,
+                paint);
+    }
+
+    public void drawWinningLine(Canvas canvas) {
+        paint.setStrokeWidth(cellSize);
+        paint.setAlpha(70);
+        int row = game.getWinType()[0];
+        int column = game.getWinType()[1];
+
+        switch (game.getWinType()[2]) {
+            case 1:
+                drawHorizontalLine(canvas, row, column);
+                break;
+            case 2:
+                drawVerticalLine(canvas, row, column);
+                break;
+            case 3:
+                drawDiagonalLineNegative(canvas);
+                break;
+            case 4:
+                drawDiagonalLinePositive(canvas);
+                break;
+
+
+        }
     }
 
     public void setUpGame(Button playAgain, Button home, TextView playerDisplay, String[] names) {
