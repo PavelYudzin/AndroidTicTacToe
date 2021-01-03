@@ -202,16 +202,19 @@ public class TicTacToeBoard extends View {
             case 4:
                 drawDiagonalLinePositive(canvas);
                 break;
-
-
         }
     }
 
-    public void setUpGame(Button playAgain, Button home, TextView playerDisplay, String[] names) {
+    public void setUpGame(Button playAgain, Button home, TextView playerDisplay, String[] names,
+                          TextView playerOneScore, TextView playerTwoScore) {
         game.setPlayAgainBTN(playAgain);
         game.setHomeBTN(home);
         game.setPlayerTurn(playerDisplay);
         game.setPlayerNames(names);
+        game.setShowPlayerOneScore(playerOneScore);
+        game.setShowPlayerTwoScore(playerTwoScore);
+        game.setPlayerOneScore(0);
+        game.setPlayerTwoScore(0);
     }
 
     public void resetGame() {

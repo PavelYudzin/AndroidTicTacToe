@@ -19,6 +19,10 @@ public class GameDisplay extends AppCompatActivity {
         Button homeBTN = findViewById(R.id.home_button);
         TextView playerTurn = findViewById(R.id.player_display);
         String[] playerNames = getIntent().getStringArrayExtra("PLAYER_NAMES");
+        TextView playerOneName = findViewById(R.id.player_one_name);
+        TextView playerTwoName = findViewById(R.id.player_two_name);
+        TextView playerOneScore = findViewById(R.id.player_one_score);
+        TextView playerTwoScore = findViewById(R.id.player_two_score);
 
         if(playerNames != null) {
             playerTurn.setText((playerNames[0] + "'s turn"));
@@ -28,7 +32,11 @@ public class GameDisplay extends AppCompatActivity {
         homeBTN.setVisibility(View.GONE);
 
         ticTacToeBoard = findViewById(R.id.ticTacToeBoard);
-        ticTacToeBoard.setUpGame(playAgainBTN, homeBTN, playerTurn, playerNames);
+        ticTacToeBoard.setUpGame(playAgainBTN, homeBTN, playerTurn, playerNames, playerOneScore, playerTwoScore);
+        playerOneName.setText(playerNames[0]);
+        playerTwoName.setText(playerNames[1]);
+        playerOneScore.setText("0");
+        playerTwoScore.setText("0");
     }
 
     public void playAgainButtonClick(View view) {

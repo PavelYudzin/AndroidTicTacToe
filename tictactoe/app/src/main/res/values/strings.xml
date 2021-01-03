@@ -11,4 +11,6 @@
     <string name="home_button">Home</string>
     <string name="won"> Won!!!</string>
     <string name="draw">Tie Game!!!</string>
+    <string name="X">X</string>
+    <string name="O">O</string>
 </resources>
