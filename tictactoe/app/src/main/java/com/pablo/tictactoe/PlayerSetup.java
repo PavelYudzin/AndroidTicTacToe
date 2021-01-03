@@ -22,10 +22,10 @@ public class PlayerSetup extends AppCompatActivity {
     public void submitButtonClick(View view) {
         String playerOneName = player1.getText().toString();
         String playerTwoName = player2.getText().toString();
-        if(playerOneName.equals("")) {
+        if(playerOneName.trim().equals("")) {
             playerOneName = "Player 1";
         }
-        if(playerTwoName.equals("")) {
+        if(playerTwoName.trim().equals("")) {
             playerTwoName = "Player 2";
         }
         Intent intent = new Intent(this, GameDisplay.class);
