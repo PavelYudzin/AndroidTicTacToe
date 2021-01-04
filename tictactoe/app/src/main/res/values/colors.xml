@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="status_bar">#151c21</color>
+    <color name="dark_nav">#31404f</color>
+
     <color name="background">#25313b</color>
 
     <color name="gradient_background_start">#151c21</color>
