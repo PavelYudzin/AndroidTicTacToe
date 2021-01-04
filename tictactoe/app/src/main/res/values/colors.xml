@@ -7,4 +7,39 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="background">#25313b</color>
+
+    <color name="gradient_background_start">#151c21</color>
+    <color name="gradient_background_end">#31404f</color>
+
+    <color name="main_title_text">@color/white</color>
+    <color name="main_button">#fc9a0e</color>
+    <color name="main_button_border">@color/white</color>
+    <color name="main_button_text">@color/black</color>
+
+    <color name="player_setup_title_text">@color/white</color>
+    <color name="player1">#00D508</color>
+    <color name="player2">#E40000</color>
+    <color name="player_setup_hint">#bfbfbf</color>
+    <color name="player_setup_text">@color/white</color>
+
+    <color name="info_line_text">@color/white</color>
+    <color name="game_player_info">@color/white</color>
+    <color name="play_again_button">#ededed</color>
+    <color name="play_again_button_border">@color/black</color>
+    <color name="play_again_button_text">@color/black</color>
+    <color name="home_button">#fc9a0e</color>
+    <color name="home_button_border">@color/black</color>
+    <color name="home_button_text">@color/black</color>
+
+    <!-- game board -->
+    <color name="x">#00D508</color>
+    <color name="o">#E40000</color>
+    <color name="board">@color/white</color>
+    <color name="winning_line">@color/white</color>
+
+    <color name="submit_button">#ededed</color>
+    <color name="submit_button_border">@color/black</color>
+    <color name="submit_button_text">@color/black</color>
 </resources>

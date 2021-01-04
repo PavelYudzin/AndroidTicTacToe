@@ -17,7 +17,7 @@ public class GameDisplay extends AppCompatActivity {
         setContentView(R.layout.game_display);
         Button playAgainBTN = findViewById(R.id.play_again_button);
         Button homeBTN = findViewById(R.id.home_button);
-        TextView playerTurn = findViewById(R.id.player_display);
+        TextView playerTurn = findViewById(R.id.info_line);
         String[] playerNames = getIntent().getStringArrayExtra("PLAYER_NAMES");
         TextView playerOneName = findViewById(R.id.player_one_name);
         TextView playerTwoName = findViewById(R.id.player_two_name);
