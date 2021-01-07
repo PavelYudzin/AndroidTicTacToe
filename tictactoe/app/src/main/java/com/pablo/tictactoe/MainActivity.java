@@ -10,21 +10,26 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-
+    private Button pve;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button pve = findViewById(R.id.pve_button);
-        pve.setVisibility(View.INVISIBLE);
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.dark_nav));
             getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.status_bar));
         }
+
+        pve = findViewById(R.id.pve_button);
+        pve.setVisibility(View.GONE);
     }
 
-    public void playButtonClick(View view) {
+    public void pvpButtonClick(View view) {
         Intent intent = new Intent(this, PlayerSetup.class);
         startActivity(intent);
+    }
+
+    public void pveButtonClick(View view) {
+        Intent intent = new Intent(this, GameDisplay.class);
     }
 }
