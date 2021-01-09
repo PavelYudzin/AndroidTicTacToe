@@ -10,8 +10,8 @@
     <string name="submit_button">Принять</string>
     <string name="play_again_button">Еще раз</string>
     <string name="home_button">В начало</string>
-    <string name="turn">\u0020ходит</string>
-    <string name="won">u\0020выиграл!!!</string>
+    <string name="turn">&#160;ходит</string>
+    <string name="won">&#160;выиграл!!!</string>
     <string name="tie">Ничья!!!</string>
     <string name="X">X</string>
     <string name="O">O</string>
