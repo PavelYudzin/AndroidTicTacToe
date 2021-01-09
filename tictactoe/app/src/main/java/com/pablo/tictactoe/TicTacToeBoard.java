@@ -205,12 +205,15 @@ public class TicTacToeBoard extends View {
         }
     }
 
-    public void setUpGame(Button playAgain, Button home, TextView playerDisplay, String[] names,
+    public void setUpGame(Button playAgain, Button home, TextView playerDisplay, String[] strings,
                           TextView playerOneScore, TextView playerTwoScore) {
         game.setPlayAgainBTN(playAgain);
         game.setHomeBTN(home);
         game.setPlayerTurn(playerDisplay);
-        game.setPlayerNames(names);
+        game.setPlayerNames(strings[0], strings[1]);
+        game.setTurn(strings[2]);
+        game.setWon(strings[3]);
+        game.setTie(strings[4]);
         game.setShowPlayerOneScore(playerOneScore);
         game.setShowPlayerTwoScore(playerTwoScore);
         game.setPlayerOneScore(0);

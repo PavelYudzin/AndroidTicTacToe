@@ -11,7 +11,10 @@ public class PVPLogic {
     private Button playAgainBTN;
     private Button homeBTN;
     private TextView playerTurn;
-    private String[] playerNames = {"Player 1", "Player 2"};
+    private String[] playerNames = new String[2];
+    private String turn;
+    private String won;
+    private String tie;
     private int boardFilled;
     private TextView showPlayerOneScore;
     private TextView showPlayerTwoScore;
@@ -57,7 +60,7 @@ public class PVPLogic {
         this.playerTurn = playerTurn;
     }
 
-    public void setPlayerNames(String[] playerNames) {
+    public void setPlayerNames(String ... playerNames) {
         this.playerNames = playerNames;
     }
 
@@ -81,14 +84,26 @@ public class PVPLogic {
         this.showPlayerTwoScore = showPlayerTwoScore;
     }
 
+    public void setTurn(String turn) {
+        this.turn = turn;
+    }
+
+    public void setWon(String won) {
+        this.won = won;
+    }
+
+    public void setTie(String tie) {
+        this.tie = tie;
+    }
+
     public boolean updateGameBoard(int row, int column) {
         if (gameBoard[row - 1][column - 1] == 0) {
             gameBoard[row - 1][column - 1] = player;
             boardFilled++;
             if (player == 1) {
-                playerTurn.setText((playerNames[1] + "'s turn"));
+                playerTurn.setText((playerNames[1] + turn));
             } else {
-                playerTurn.setText((playerNames[0] + "'s turn"));
+                playerTurn.setText((playerNames[0] + turn));
             }
 
             return true;
@@ -135,7 +150,6 @@ public class PVPLogic {
         if (isWinner) {
             playAgainBTN.setVisibility(View.VISIBLE);
             homeBTN.setVisibility(View.VISIBLE);
-            String won = " Won!!!";
             playerTurn.setText((playerNames[player - 1] + won));
             if(player == 1) {
                 playerOneScore++;
@@ -144,7 +158,6 @@ public class PVPLogic {
             }
             showScore();
         } else if (boardFilled == 9) {
-            String tie = "Tie Game!!!";
             playAgainBTN.setVisibility(View.VISIBLE);
             homeBTN.setVisibility(View.VISIBLE);
             playerTurn.setText(tie);
@@ -169,7 +182,7 @@ public class PVPLogic {
         }
         playAgainBTN.setVisibility(View.GONE);
         homeBTN.setVisibility(View.GONE);
-        playerTurn.setText((playerNames[player -1] + "'s turn"));
+        playerTurn.setText((playerNames[player -1] + turn));
         winType = new int[]{-1, -1, -1};
     }
 
