@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TicTacToe</string>
+    <string name="home_title"> </string>
+    <string name="pve">игрок VS андроид</string>
+    <string name="pvp">игрок VS игрок</string>
+    <string name="player1">Игрок 1</string>
+    <string name="player2">Игрок 2</string>
+    <string name="enter_name">Введите имя</string>
+    <string name="submit_button">Принять</string>
+    <string name="play_again_button">Еще раз</string>
+    <string name="home_button">В начало</string>
+    <string name="turn"> Ходит</string>
+    <string name="won"> Выиграл!!!</string>
+    <string name="tie">Ничья!!!</string>
+    <string name="X">X</string>
+    <string name="O">O</string>
+</resources>
