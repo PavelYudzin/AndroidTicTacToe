@@ -11,7 +11,7 @@
     <string name="play_again_button">Play Again</string>
     <string name="home_button">Home</string>
     <string name="turn">\'s Turn</string>
-    <string name="won"> Won!!!</string>
+    <string name="won">\u0020Won!!!</string>
     <string name="tie">Tie Game!!!</string>
     <string name="X">X</string>
     <string name="O">O</string>

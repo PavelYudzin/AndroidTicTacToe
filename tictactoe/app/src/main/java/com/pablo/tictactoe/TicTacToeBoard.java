@@ -137,14 +137,18 @@ public class TicTacToeBoard extends View {
                 paint);
     }
 
-    @SuppressLint("NewApi")
     private void drawO(Canvas canvas, int row, int column) {
         paint.setColor(OColor);
+        canvas.drawCircle(column * cellSize + cellSize / 2f, row * cellSize + cellSize / 2f,
+                cellSize / 2f - correction, paint);
+
+        /*
         canvas.drawOval(column * cellSize + correction,
                 row * cellSize + correction,
                 (column * cellSize + cellSize) - correction,
                 (row * cellSize + cellSize) - correction,
                 paint);
+        */
     }
 
     private void drawHorizontalLine(Canvas canvas, int row, int column) {
