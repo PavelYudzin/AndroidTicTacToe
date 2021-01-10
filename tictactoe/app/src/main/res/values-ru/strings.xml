@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TicTacToe</string>
-    <string name="home_title"> </string>
     <string name="pve">игрок VS андроид</string>
     <string name="pvp">игрок VS игрок</string>
     <string name="player1">Игрок 1</string>

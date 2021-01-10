@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TicTacToe</string>
-    <string name="home_title">Tic Tac Toe</string>
     <string name="pve">player VS android</string>
     <string name="pvp">Player VS Player</string>
     <string name="player1">Player 1</string>
